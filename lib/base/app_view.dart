@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:karachi_biennale/constants/app_colors.dart';
+import 'package:karachi_biennale/presentation/about/controller/about_controller.dart';
+import 'package:karachi_biennale/presentation/artist/controller/artist_controller.dart';
+import 'package:karachi_biennale/presentation/event/controller/my_event_controller.dart';
+import 'package:karachi_biennale/presentation/forgot/controller/forget_password_controller.dart';
+import 'package:karachi_biennale/presentation/home/controller/logout_controller.dart';
+import 'package:karachi_biennale/presentation/home/controller/user_controller.dart';
+import 'package:karachi_biennale/presentation/login/controller/login_controller.dart';
+import 'package:karachi_biennale/presentation/login/login_view.dart';
+import 'package:karachi_biennale/presentation/program/controller/program_controller.dart';
+import 'package:karachi_biennale/presentation/register/controller/signup_controller.dart';
+import 'package:karachi_biennale/presentation/splash/splash_view.dart';
+import 'package:karachi_biennale/presentation/venues/controller/venue_controller.dart';
+import 'package:karachi_biennale/repository/check_user_exist_repo.dart';
+import 'package:karachi_biennale/route_generator.dart';
+import 'package:provider/provider.dart';
+
+class AppView extends StatelessWidget {
+  const AppView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final CheckUserExistRepository _checkUserExistRepository = CheckUserExistRepository();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MyEventController()),
+        ChangeNotifierProvider(create: (context) => LoginController()),
+        ChangeNotifierProvider(create: (_) => SignupController()),
+        ChangeNotifierProvider(create: (_) => ForgetPasswordController()),
+        ChangeNotifierProvider(create: (_) => LogoutController()),
+        ChangeNotifierProvider(create: (_) => AboutController()),
+        ChangeNotifierProvider(create: (_) => ArtistController()),
+        ChangeNotifierProvider(create: (_) => ProgramController()),
+        ChangeNotifierProvider(create: (_)=> VenueController()),
+        ChangeNotifierProvider(create: (_)=> UserController()),
+      ],
+      child: MaterialApp(
+        initialRoute: _checkUserExistRepository.isUserExist(),
+        onGenerateRoute: RouteGenerator.generateRoute,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(scaffoldBackgroundColor: AppColors.whiteColor),
+      ),
+    );
+  }
+}

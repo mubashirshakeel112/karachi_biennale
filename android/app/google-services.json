@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "634213749614",
+    "project_id": "karachi-biennale-83f05",
+    "storage_bucket": "karachi-biennale-83f05.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634213749614:android:22067fe9374285ff65677f",
+        "android_client_info": {
+          "package_name": "com.example.karachi_biennale"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcJP5wWW1-oBgjssxlrctvTgTTcQwdlWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
