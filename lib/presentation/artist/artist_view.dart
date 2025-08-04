@@ -9,6 +9,7 @@ import 'package:karachi_biennale/presentation/artist/controller/artist_controlle
 import 'package:karachi_biennale/presentation/artist/widgets/artist_card.dart';
 import 'package:karachi_biennale/widgets/custom_app_bar.dart';
 import 'package:karachi_biennale/widgets/custom_dialog_box.dart';
+import 'package:karachi_biennale/widgets/custom_snack_bar.dart';
 import 'package:karachi_biennale/widgets/custom_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,7 @@ class _ArtistViewState extends State<ArtistView> {
                               Icon(Icons.search_off_outlined, size: 80, color: AppColors.textColor,),
                               Text(
                                 'No artists found for "${artistController.searchQuery}"',
-                                style: interMedium,
+                                style: interRegular,
                               ),
                             ],
                           ),
@@ -88,12 +89,15 @@ class _ArtistViewState extends State<ArtistView> {
                                 final isAlreadyVoted = artistController.votedArtistIds.contains(artist.id);
                                 DialogBox.showDialogBox(
                                   context: context,
+                                  isVote: isVoted,
                                   onPressed: () {
                                     if (isAlreadyVoted) {
-                                      artistController.unvote(userId, artist.id); // 🔁 Unvote
+                                      artistController.unvote(userId, artist.id);
+                                      CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'UnVote Successfully');
                                       Navigator.pop(context);
                                     } else {
-                                      artistController.vote(userId, artist.id); // ✅ Vote
+                                      artistController.vote(userId, artist.id);
+                                      CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Add Vote Successfully');
                                       Navigator.pop(context);
                                     }
                                   },

@@ -53,7 +53,7 @@ class _MyEventViewState extends State<MyEventView> {
                       onTap: () {
                         final myEventId = myEvent.id;
                         final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-                        myEventController.deleteEvent(myEventId, uid);
+                        myEventController.deleteEvent(myEventId, uid, context);
                       },
                       child: Align(
                         alignment: Alignment.bottomRight,

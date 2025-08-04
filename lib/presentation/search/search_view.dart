@@ -77,7 +77,7 @@ class _SearchViewState extends State<SearchView> {
                         // SvgPicture.asset(Strings.crossIcon, height: 80), // optional icon
                         Icon(Icons.search_off_outlined, size: 80, color: AppColors.textColor,),
                         SizedBox(height: 12),
-                        Text("No results found", style: TextStyle(color: Colors.grey)),
+                        Text("No results found", style: interRegular),
                       ],
                     ),
                   );
@@ -120,6 +120,7 @@ class _SearchViewState extends State<SearchView> {
                               final isAlreadyVoted = artistController.votedArtistIds.contains(artist.id);
                               DialogBox.showDialogBox(
                                 context: context,
+                                isVote: isVoted,
                                 onPressed: () {
                                   if (isAlreadyVoted) {
                                     artistController.unvote(userId, artist.id);

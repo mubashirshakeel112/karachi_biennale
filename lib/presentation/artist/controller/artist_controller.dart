@@ -57,6 +57,7 @@ class ArtistController extends ChangeNotifier {
   }
 
   void filterArtists(String query) {
+    _searchQuery = query;
     if (query.isEmpty) {
       _filteredArtistData = List.from(_artistData);
     } else {

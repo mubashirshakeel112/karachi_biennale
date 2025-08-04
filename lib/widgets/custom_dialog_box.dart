@@ -4,7 +4,7 @@ import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 
 class DialogBox {
-  static showDialogBox({required BuildContext context,required VoidCallback onPressed}) {
+  static showDialogBox({required BuildContext context,required VoidCallback onPressed, required bool isVote}) {
     return showDialog(
       barrierDismissible: false,
       context: context,
@@ -18,7 +18,7 @@ class DialogBox {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset( Strings.questionCircleIcon,
+              SvgPicture.asset( isVote ? Strings.crossCircleIcon : Strings.questionCircleIcon,
                 width: 98,
                 height: 98,
               ),

@@ -47,14 +47,16 @@ class VenueCard extends StatelessWidget {
               // child: Image.asset(leadingImage, fit: BoxFit.cover, width: 78, height: 76),
             ),
             SizedBox(width: 17),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: interBold),
-                SizedBox(height: 2),
-                Text(subtitle, style: interLight.copyWith(fontSize: 15)),
-              ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: interBold),
+                  SizedBox(height: 2),
+                  Text(subtitle, style: interLight.copyWith(fontSize: 15)),
+                ],
+              ),
             ),
           ],
         ),

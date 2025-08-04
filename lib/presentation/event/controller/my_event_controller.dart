@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karachi_biennale/domain/models/my_event_model.dart';
 import 'package:karachi_biennale/repository/bookmark_repo.dart';
+import 'package:karachi_biennale/widgets/custom_snack_bar.dart';
 
 class MyEventController extends ChangeNotifier{
   // List<MyEventModel> myEventModel = [
@@ -74,9 +75,10 @@ class MyEventController extends ChangeNotifier{
     }
   }
 
-  Future<void> deleteEvent(String myEventId, String uid) async{
+  Future<void> deleteEvent(String myEventId, String uid, context) async{
     try{
       await _bookmarkRepository.deleteMyEvent(myEventId, uid);
+      CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Delete Event Successfully');
       getMyEvent();
     }catch(e){
       debugPrint(e.toString());

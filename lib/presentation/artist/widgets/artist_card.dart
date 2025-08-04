@@ -97,7 +97,7 @@ class ArtistCard extends StatelessWidget {
   final VoidCallback? onVote;
   final Widget? trailing;
   final bool isVoted;
-  final bool isUnvoted; // 👈 new flag
+  final bool isUnvoted;
 
   const ArtistCard({
     super.key,
@@ -110,7 +110,7 @@ class ArtistCard extends StatelessWidget {
     this.margin,
     this.onVote,
     required this.isVoted,
-    required this.isUnvoted, // 👈 required
+    required this.isUnvoted,
   });
 
   @override
@@ -160,10 +160,10 @@ class ArtistCard extends StatelessWidget {
                 child: SvgPicture.asset(
                   isVoted
                       ? Strings
-                          .checkIcon // ✅ green check when voted
+                          .checkIcon
                       : isUnvoted
                       ? Strings
-                          .crossIcon // ❌ red cross when unvoted
+                          .crossIcon
                       : Strings.checkIcon,
                   colorFilter: ColorFilter.mode(
                     isVoted
