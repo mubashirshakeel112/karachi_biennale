@@ -13,7 +13,6 @@ import 'package:karachi_biennale/presentation/splash/splash_view.dart';
 import 'package:karachi_biennale/presentation/venues/venue/venue_view.dart';
 import 'package:karachi_biennale/presentation/venues/venue_detail/venue_detail_view.dart';
 import 'package:karachi_biennale/presentation/venues/venue_full_image/venues_full_image_view.dart';
-import 'package:karachi_biennale/widgets/page_transition.dart';
 import 'package:page_transition/page_transition.dart';
 
 class RouteGenerator {
@@ -22,7 +21,7 @@ class RouteGenerator {
       case SplashView.id:
         return MaterialPageRoute(builder: (_) => SplashView());
       case LoginView.id:
-        return PageTransition(child: LoginView(),type: PageTransitionType.rightToLeft);
+        return PageTransition(child: LoginView(), type: PageTransitionType.rightToLeft);
       case RegisterView.id:
         return PageTransition(child: RegisterView(), type: PageTransitionType.rightToLeft);
       case ForgotPasswordView.id:
@@ -38,13 +37,15 @@ class RouteGenerator {
       case VenueView.id:
         return PageTransition(child: VenueView(), type: PageTransitionType.rightToLeft);
       case VenueDetailView.id:
-        return PageTransition(child: VenueDetailView(), type: PageTransitionType.rightToLeft);
+        String args = settings.arguments as String;
+        return PageTransition(child: VenueDetailView(venueId: args,), type: PageTransitionType.rightToLeft);
       case VenuesFullImageView.id:
         return PageTransition(child: VenuesFullImageView(), type: PageTransitionType.rightToLeft);
       case ProgramView.id:
         return PageTransition(child: ProgramView(), type: PageTransitionType.rightToLeft);
       case ProgramDetailView.id:
-        return PageTransition(child: ProgramDetailView(), type: PageTransitionType.rightToLeft);
+        final args = settings.arguments as String;
+        return PageTransition(child: ProgramDetailView(programId: args,), type: PageTransitionType.rightToLeft);
       case ArtistView.id:
         return PageTransition(child: ArtistView(), type: PageTransitionType.rightToLeft);
       default:

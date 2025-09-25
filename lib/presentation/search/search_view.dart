@@ -43,9 +43,9 @@ class _SearchViewState extends State<SearchView> {
     final artistController = Provider.of<ArtistController>(context);
     final programController = Provider.of<ProgramController>(context);
     return Scaffold(
-      appBar: CustomAppBar.secondaryAppBar(title: 'Search', context: context),
       body: Column(
         children: [
+          SecondaryAppBar(title: 'Search',),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 24),
             child: CustomTextField(
@@ -74,7 +74,7 @@ class _SearchViewState extends State<SearchView> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // SvgPicture.asset(Strings.crossIcon, height: 80), // optional icon
+                        // SvgPicture.asset(Strings.crossIcon, height: 80),
                         Icon(Icons.search_off_outlined, size: 80, color: AppColors.textColor,),
                         SizedBox(height: 12),
                         Text("No results found", style: interRegular),
@@ -189,121 +189,6 @@ class _SearchViewState extends State<SearchView> {
           ),
         ],
       ),
-
-
-
-      // body: Column(
-      //   children: [
-      //     Padding(
-      //       padding: const EdgeInsets.only(left: 20, right: 20, top: 24),
-      //       child: CustomTextField(
-      //         hintText: 'Search venue by name',
-      //         filled: true,
-      //         fillColor: AppColors.offWhiteColor,
-      //         isSuffixIconShow: true,
-      //         suffixIcon: SvgPicture.asset(Strings.searchIcon, width: 25, height: 25),
-      //         borderSide: BorderSide.none,
-      //         onChanged: (value) {
-      //           artistController.filterArtists(value);
-      //           programController.filterPrograms(value);
-      //         },
-      //       ),
-      //     ),
-      //     Expanded(
-      //       child:
-      //           artistController.isLoading || programController.isLoading
-      //               ? Center(child: Lottie.asset(Strings.lottieLoadAnim, width: 80, height: 80))
-      //               : ListView(
-      //                 padding: EdgeInsets.only(left: 20, right: 16, top: 26, bottom: 19),
-      //                 children: [
-      //                   Row(
-      //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //                     children: [
-      //                       Text("Artist", style: interBold),
-      //                       GestureDetector(
-      //                         onTap: () {
-      //                           Navigator.pushNamed(context, ArtistView.id);
-      //                         },
-      //                         child: SvgPicture.asset(Strings.chevronArrow),
-      //                       ),
-      //                     ],
-      //                   ),
-      //                   SizedBox(height: 29),
-      //                   ListView.builder(
-      //                     shrinkWrap: true,
-      //                     physics: NeverScrollableScrollPhysics(),
-      //                     itemCount: artistController.artistData.length >= 2 ? 2 : artistController.artistData.length,
-      //                     itemBuilder: (context, index) {
-      //                       final artist = artistController.artistData[index];
-      //                       final isVoted = artistController.votedArtistIds.contains(artist.id);
-      //                       final isUnvoted = artistController.unvotedArtistIds.contains(artist.id);
-      //                       return ArtistCard(
-      //                         title: artist.name,
-      //                         subtitle: artist.skill,
-      //                         leadingImage: artist.imageUrl,
-      //                         margin: EdgeInsets.only(bottom: 20),
-      //                         isVoted: isVoted,
-      //                         isUnvoted: isUnvoted,
-      //                         onVote: () {
-      //                           final userId = FirebaseAuth.instance.currentUser!.uid;
-      //                           final isAlreadyVoted = artistController.votedArtistIds.contains(artist.id);
-      //                           DialogBox.showDialogBox(context: context, onPressed: () {
-      //                             if (isAlreadyVoted) {
-      //                               artistController.unvote(userId, artist.id); // 🔁 Unvote
-      //                               Navigator.pop(context);
-      //                             } else {
-      //                               artistController.vote(userId, artist.id); // ✅ Vote
-      //                               Navigator.pop(context);
-      //                             }
-      //                           });
-      //                         },
-      //                       );
-      //                     },
-      //                   ),
-      //                   SizedBox(height: 10),
-      //                   Row(
-      //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //                     children: [
-      //                       Text("Programs", style: interBold),
-      //                       GestureDetector(
-      //                         onTap: () {
-      //                           Navigator.pushNamed(context, ProgramView.id);
-      //                         },
-      //                         child: SvgPicture.asset(Strings.chevronArrow, width: 20, height: 20),
-      //                       ),
-      //                     ],
-      //                   ),
-      //                   SizedBox(height: 29),
-      //                   ListView.builder(
-      //                     shrinkWrap: true,
-      //                     physics: NeverScrollableScrollPhysics(),
-      //                     padding: EdgeInsets.zero,
-      //                     itemCount: programController.filteredProgramData.length >= 2 ? 2 : programController.filteredProgramData.length,
-      //                     itemBuilder: (context, index) {
-      //                       final program = programController.filteredProgramData[index];
-      //                       final isBookmarked = programController.bookmarkedEventIds.contains(program.id);
-      //                       final iconAsset = isBookmarked ? Strings.bookmarkFilledIcon : Strings.bookmarkOutlineIcon;
-      //                       return ProgramCard(
-      //                         margin: EdgeInsets.only(bottom: 20),
-      //                         title: program.title,
-      //                         subtitle: program.subtitle,
-      //                         leadingImage: program.image,
-      //                         calenderIcon: Strings.calenderClockIcon,
-      //                         time: program.time,
-      //                         bookmarkIcon: iconAsset,
-      //                         onBookmarkedPressed: (){
-      //                           final myEvent = MyEventModel(image: program.image, title: program.title, subtitle: program.subtitle, time: program.time, id: program.id);
-      //                           final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-      //                           programController.toggleBookmark(myEvent, uid, context);
-      //                         },
-      //                       );
-      //                     },
-      //                   ),
-      //                 ],
-      //               ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

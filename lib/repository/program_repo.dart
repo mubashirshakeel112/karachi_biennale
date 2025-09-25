@@ -7,4 +7,9 @@ class ProgramRepository extends ProgramService{
   Future<List<ProgramModel>> getProgram() async{
     return await _wcProgramService.getProgram();
   }
+
+  @override
+  Future<ProgramModel> getProgramById(String id) async{
+    return await _wcProgramService.getProgramById(id);
+  }
 }

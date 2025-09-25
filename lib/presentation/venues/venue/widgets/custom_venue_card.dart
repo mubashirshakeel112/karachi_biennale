@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:karachi_biennale/constants/app_colors.dart';
-import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/constants/typography.dart';
 
 class VenueCard extends StatelessWidget {
@@ -28,8 +26,7 @@ class VenueCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: 112,
-        padding: padding ?? EdgeInsets.only(left: 16),
+        padding: padding ?? EdgeInsets.only(left: 17, top: 18, bottom: 18, right: 76),
         margin: margin,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: AppColors.borderColor),
@@ -40,11 +37,9 @@ class VenueCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              // margin: EdgeInsets.only(left: 16, top: 18, bottom: 18),
               width: 78,
               height: 76,
               child: Image.network(leadingImage, width: 78, height: 76, fit: BoxFit.cover),
-              // child: Image.asset(leadingImage, fit: BoxFit.cover, width: 78, height: 76),
             ),
             SizedBox(width: 17),
             Expanded(
@@ -54,7 +49,7 @@ class VenueCard extends StatelessWidget {
                 children: [
                   Text(title, style: interBold),
                   SizedBox(height: 2),
-                  Text(subtitle, style: interLight.copyWith(fontSize: 15)),
+                  Text(subtitle, style: interLight.copyWith(fontSize: 15), overflow: TextOverflow.ellipsis,),
                 ],
               ),
             ),

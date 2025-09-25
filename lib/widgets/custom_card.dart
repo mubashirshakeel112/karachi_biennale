@@ -23,7 +23,9 @@ class CustomCard extends StatelessWidget {
     this.calenderIcon,
     this.time,
     this.onTap,
-    this.trailing, this.padding, this.margin,
+    this.trailing,
+    this.padding,
+    this.margin,
   });
 
   @override
@@ -47,15 +49,10 @@ class CustomCard extends StatelessWidget {
               margin: EdgeInsets.only(left: 16, top: 18, bottom: 18),
               width: 78,
               height: 76,
-              child: Image.network(
-                leadingImage,
-                width: 78,
-                height: 76,
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(leadingImage, width: 78, height: 76, fit: BoxFit.cover),
               // child: Image.asset(leadingImage, fit: BoxFit.cover, width: 78, height: 76),
             ),
-            SizedBox(width: 17,),
+            SizedBox(width: 17),
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,16 +66,13 @@ class CustomCard extends StatelessWidget {
                     spacing: 4,
                     children: [
                       SvgPicture.asset(Strings.calenderClockIcon),
-                      Text(
-                        time!,
-                        style: interLight.copyWith(fontSize: 15),
-                      ),
+                      Text(time!, style: interLight.copyWith(fontSize: 15)),
                     ],
                   ),
               ],
             ),
             Spacer(),
-            if(trailing != null) trailing!,
+            if (trailing != null) trailing!,
           ],
         ),
       ),

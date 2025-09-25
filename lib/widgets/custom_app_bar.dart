@@ -3,68 +3,133 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/constants/typography.dart';
+import 'package:karachi_biennale/presentation/home/home_view.dart';
 
-class CustomAppBar {
-  static PreferredSizeWidget primaryAppBar({
-    String? title,
-    String? subtitle,
-    Widget? child,
-    Widget? leading,
-    Widget? trailing,
-    double? height,
-  }) {
-    return AppBar(
-      backgroundColor: AppColors.primaryColor,
-      toolbarHeight: height ?? 205,
-      automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0,
-      flexibleSpace: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 27, top: 61),
+// class CustomAppBar {
+//   static PreferredSizeWidget primaryAppBar({
+//     String? title,
+//     String? subtitle,
+//     Widget? child,
+//     double? height,
+//   }) {
+//     return AppBar(
+//       backgroundColor: AppColors.primaryColor,
+//       toolbarHeight: height ?? 205,
+//       automaticallyImplyLeading: false,
+//       scrolledUnderElevation: 0,
+//       flexibleSpace: Padding(
+//         padding: const EdgeInsets.only(left: 20, right: 27, top: 61),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 SvgPicture.asset(Strings.leftArrow),
+//                 SvgPicture.asset(Strings.homeIcon),
+//               ],
+//             ),
+//             SizedBox(height: 29),
+//             child ??
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(title ?? '', style: interBlack),
+//                     SizedBox(height: 6),
+//                     Text(subtitle ?? '', style: interLight.copyWith(color: AppColors.whiteColor)),
+//                   ],
+//                 ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+//
+//   static PreferredSizeWidget secondaryAppBar({required BuildContext context,String? title, double? height}) {
+//     return AppBar(
+//       backgroundColor: AppColors.primaryColor,
+//       toolbarHeight: height ?? 90,
+//       automaticallyImplyLeading: false,
+//       scrolledUnderElevation: 0,
+//       flexibleSpace: Padding(
+//         padding: const EdgeInsets.only(left: 12, right: 19, top: 53),
+//         child: Row(
+//           children: [
+//             InkWell(
+//               borderRadius: BorderRadius.circular(50),
+//                 onTap: (){
+//                   Navigator.pop(context);
+//                 },
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: SvgPicture.asset(Strings.leftArrow),
+//                 )),
+//             SizedBox(width: 7),
+//             Expanded(child: Text(title ?? '', style: interBold.copyWith(fontSize: 25, color: AppColors.whiteColor))),
+//             InkWell(
+//               borderRadius: BorderRadius.circular(50),
+//                 onTap: (){
+//                   Navigator.pushNamed(context, HomeView.id);
+//                 },
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: SvgPicture.asset(Strings.homeIcon),
+//                 )),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class PrimaryAppBar extends StatelessWidget {
+  final String? title;
+  final String? subtitle;
+  final Widget? child;
+  final double? height;
+  const PrimaryAppBar({super.key, this.title, this.subtitle, this.child, this.height});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: height ?? 205,
+      color: AppColors.primaryColor,
+      child: child ?? Padding(
+        padding: const EdgeInsets.only(left: 12, right: 27, top: 42),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                leading ?? SvgPicture.asset(Strings.leftArrow),
-                trailing ?? SvgPicture.asset(Strings.homeIcon),
+                Material(
+                  color: AppColors.primaryColor,
+                  child: InkWell(
+                      borderRadius: BorderRadius.circular(50),
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(Strings.leftArrow),
+                      )),
+                ),
+                SvgPicture.asset(Strings.homeIcon),
               ],
             ),
-            SizedBox(height: 29),
-            child ??
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title ?? '', style: interBlack),
-                    SizedBox(height: 6),
-                    Text(subtitle ?? '', style: interLight.copyWith(color: AppColors.whiteColor)),
-                  ],
-                ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  static PreferredSizeWidget secondaryAppBar({required BuildContext context,String? title, Widget? leading, Widget? trailing, double? height}) {
-    return AppBar(
-      backgroundColor: AppColors.primaryColor,
-      toolbarHeight: height ?? 90,
-      automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0,
-      flexibleSpace: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 27, top: 61),
-        child: Row(
-          children: [
-            leading ?? GestureDetector(
-                onTap: (){
-                  Navigator.pop(context);
-                },
-                child: SvgPicture.asset(Strings.leftArrow)),
-            SizedBox(width: 15),
-            Expanded(child: Text(title ?? '', style: interBold.copyWith(fontSize: 25, color: AppColors.whiteColor))),
-            trailing ?? SvgPicture.asset(Strings.homeIcon),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title ?? '', style: interBlack.copyWith(fontSize: 35, color: AppColors.whiteColor)),
+                      SizedBox(height: 2),
+                      Text(subtitle ?? '', style: interLight.copyWith(color: AppColors.whiteColor)),
+                    ],
+                  ),
+            ),
           ],
         ),
       ),
@@ -72,141 +137,47 @@ class CustomAppBar {
   }
 }
 
-// class CustomAppBar {
-//   static PreferredSizeWidget appBar({
-//     Text? title,
-//     Text? subTitle,
-//     Text? titleTop,
-//     // Image? leadingTop;
-//     required double appBarHeight,
-//     Image? listTileTrailing,
-//     double listTileTopPadding = 25,
-//     required BuildContext context,
-//   }) {
-//     final statusBarHeight = MediaQuery.of(context).padding.top;
-//     final appbarHeight = appBarHeight - statusBarHeight;
-//     return PreferredSize(
-//       preferredSize: Size.fromHeight(appbarHeight),
-//       child: AppBar(
-//         automaticallyImplyLeading: false,
-//         toolbarHeight: appbarHeight,
-//         backgroundColor: AppColors.primaryColor,
-//         flexibleSpace: Column(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.only(left: 20, right: 27, top: 61),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   ImageIcon(
-//                     AssetImage(Strings.leftArrow),
-//                     size: 35,
-//                     color: AppColors.whiteColor,
-//                   ),
-//                   SizedBox(width: 15),
-//                   if (titleTop != null) Expanded(child: titleTop),
-//                   ImageIcon(
-//                     AssetImage(Strings.homeIcon),
-//                     size: 35,
-//                     color: AppColors.whiteColor,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             if (title != null || subTitle != null)
-//               ListTile(
-//                 minTileHeight: 0,
-//                 minVerticalPadding: 0,
-//                 minLeadingWidth: 0,
-//                 horizontalTitleGap: 0,
-//                 dense: true,
-//                 contentPadding: EdgeInsets.only(
-//                   left: 27,
-//                   right: 31,
-//                   top: listTileTopPadding,
-//                 ),
-//                 title: title,
-//                 subtitle: subTitle,
-//                 trailing: listTileTrailing,
-//               ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+class SecondaryAppBar extends StatelessWidget {
+  final String? title;
+  final double? height;
+  const SecondaryAppBar({super.key, this.title, this.height});
 
-// class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-//   final Text? title;
-//   final Text? subTitle;
-//   final Text? titleTop;
-//   final double appBarHeight;
-//   final Image? listTileTrailing;
-//   final double listTileTopPadding;
-
-//   const CustomAppBar({
-//     super.key,
-//     this.title,
-//     this.subTitle,
-//     this.titleTop,
-//     required this.appBarHeight,
-//     this.listTileTrailing,
-//     this.listTileTopPadding = 25,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final statusbarHeight = MediaQuery.of(context).padding.top;
-//     final appbarHeight = appBarHeight - statusbarHeight;
-//     return PreferredSize(
-//       preferredSize: Size.fromHeight(appbarHeight),
-//       child: AppBar(
-//         toolbarHeight: appbarHeight,
-//         backgroundColor: ColorConstant.primaryColor,
-//         flexibleSpace: Column(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.only(left: 20, right: 27, top: 61),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   ImageIcon(
-//                     AssetImage(ImageConstant.leftArrow),
-//                     size: 35,
-//                     color: ColorConstant.whiteColor,
-//                   ),
-//                   SizedBox(width: 15),
-//                   if (titleTop != null) Expanded(child: titleTop!),
-//                   ImageIcon(
-//                     AssetImage(ImageConstant.homeIcon),
-//                     size: 35,
-//                     color: ColorConstant.whiteColor,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             if (title != null || subTitle != null)
-//               ListTile(
-//                 minTileHeight: 0,
-//                 minVerticalPadding: 0,
-//                 minLeadingWidth: 0,
-//                 horizontalTitleGap: 0,
-//                 dense: true,
-//                 contentPadding: EdgeInsets.only(
-//                   left: 27,
-//                   right: 31,
-//                   top: listTileTopPadding,
-//                 ),
-//                 title: title,
-//                 subtitle: subTitle,
-//                 trailing: listTileTrailing,
-//               ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Size get preferredSize => Size.fromHeight(appBarHeight);
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: height ?? 120,
+      color: AppColors.primaryColor,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12, right: 19, top: 42),
+        child: Row(
+          children: [
+            Material(
+              color: AppColors.primaryColor,
+              child: InkWell(
+                  borderRadius: BorderRadius.circular(50),
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(Strings.leftArrow),
+                  )),
+            ),
+            SizedBox(width: 7),
+            Expanded(child: Text(title ?? '', style: interBlack.copyWith(fontSize: 25, color: AppColors.whiteColor))),
+            InkWell(
+                borderRadius: BorderRadius.circular(50),
+                onTap: (){
+                  Navigator.pushNamed(context, HomeView.id);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(Strings.homeIcon),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}

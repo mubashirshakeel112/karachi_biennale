@@ -7,4 +7,9 @@ class VenueRepository extends VenueService{
   Future<List<VenueModel>> getVenue() async{
     return await _wcVenueService.getVenue();
   }
+
+  @override
+  Future<VenueModel> getVenueById(String id) async{
+    return _wcVenueService.getVenueById(id);
+  }
 }

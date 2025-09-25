@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,18 +28,18 @@ class _ArtistViewState extends State<ArtistView> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final provider = Provider.of<ArtistController>(context, listen: false);
-      provider.getArtistAndVotes(); // safe call here
+      provider.getArtistAndVotes();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.secondaryAppBar(title: 'Artist', context: context),
       body: Consumer<ArtistController>(
         builder: (context, artistController, child) {
           return Column(
             children: [
+              SecondaryAppBar(title: 'Artist'),
               CustomTextField(
                 hintText: 'Search venue by name',
                 filled: true,
@@ -50,7 +49,7 @@ class _ArtistViewState extends State<ArtistView> {
                 suffixIcon: SvgPicture.asset(Strings.searchIcon, width: 25, height: 25),
                 margin: EdgeInsets.only(left: 20, right: 20, top: 24),
                 onChanged: (value) {
-                  artistController.filterArtists(value); // 🔍 Filter on typing
+                  artistController.filterArtists(value);
                 },
               ),
               Expanded(
@@ -62,11 +61,8 @@ class _ArtistViewState extends State<ArtistView> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.search_off_outlined, size: 80, color: AppColors.textColor,),
-                              Text(
-                                'No artists found for "${artistController.searchQuery}"',
-                                style: interRegular,
-                              ),
+                              Icon(Icons.search_off_outlined, size: 80, color: AppColors.textColor),
+                              Text('No artists found for "${artistController.searchQuery}"', style: interRegular),
                             ],
                           ),
                         )
@@ -93,11 +89,19 @@ class _ArtistViewState extends State<ArtistView> {
                                   onPressed: () {
                                     if (isAlreadyVoted) {
                                       artistController.unvote(userId, artist.id);
-                                      CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'UnVote Successfully');
+                                      CustomSnackBar.successSnackBar(
+                                        context: context,
+                                        title: 'Success',
+                                        message: 'UnVote Successfully',
+                                      );
                                       Navigator.pop(context);
                                     } else {
                                       artistController.vote(userId, artist.id);
-                                      CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Add Vote Successfully');
+                                      CustomSnackBar.successSnackBar(
+                                        context: context,
+                                        title: 'Success',
+                                        message: 'Add Vote Successfully',
+                                      );
                                       Navigator.pop(context);
                                     }
                                   },

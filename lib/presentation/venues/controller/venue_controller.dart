@@ -25,5 +25,4 @@ class VenueController extends ChangeNotifier{
       setLoading(false);
     }
   }
-
 }

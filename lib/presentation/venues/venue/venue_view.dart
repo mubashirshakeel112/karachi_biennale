@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_controller.dart';
 import 'package:karachi_biennale/presentation/venues/venue/widgets/custom_venue_card.dart';
 import 'package:karachi_biennale/presentation/venues/venue_detail/venue_detail_view.dart';
 import 'package:karachi_biennale/widgets/custom_app_bar.dart';
-import 'package:karachi_biennale/widgets/custom_card.dart';
 import 'package:karachi_biennale/widgets/custom_dropdown.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -32,11 +30,11 @@ class _VenueViewState extends State<VenueView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.secondaryAppBar(title: 'Venues', context: context),
       body: Consumer<VenueController>(
         builder: (context, venueController, child) {
           return Column(
             children: [
+              SecondaryAppBar(title: 'Venues',),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 24),
                 child: CustomDropdown(
@@ -55,6 +53,9 @@ class _VenueViewState extends State<VenueView> {
                       title: venue.title,
                       subtitle: venue.subtitle,
                       leadingImage: venue.image,
+                      onTap: (){
+                        Navigator.pushNamed(context, VenueDetailView.id, arguments: venue.id);
+                      },
                       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     );
                   },

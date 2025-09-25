@@ -14,7 +14,7 @@ class ArtistController extends ChangeNotifier {
   List<ArtistModel> _filteredArtistData = [];
   Set<String> _votedArtistIds = {};
   bool _isLoading = false;
-  Timer? _debounce; // 🔁 debounce timer
+  // Timer? _debounce;
   String _searchQuery = '';
 
   List<ArtistModel> get artistData => _filteredArtistData;

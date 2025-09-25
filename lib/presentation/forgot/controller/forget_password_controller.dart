@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/repository/forget_password_repo.dart';
 import 'package:karachi_biennale/widgets/custom_snack_bar.dart';
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/presentation/home/controller/user_controller.dart';
 import 'package:karachi_biennale/presentation/home/home_view.dart';
 import 'package:karachi_biennale/repository/login_repo.dart';

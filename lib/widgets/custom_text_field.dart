@@ -45,12 +45,12 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         keyboardType: keyboardType,
-        obscuringCharacter: '.',
+        obscuringCharacter: '•',
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
           prefixIconConstraints: const BoxConstraints(minWidth: 27, minHeight: 27),
           prefixIcon: prefixIcon != null ? Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 15, right: 7),
             child: prefixIcon,
           ): null,
           suffixIconConstraints:BoxConstraints(minWidth: 25, minHeight: 25),

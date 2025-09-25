@@ -23,10 +23,10 @@ class FirebaseErrorHandler {
           return 'Too many login attempts. Please try again later.';
         case 'network-request-failed':
           return 'No internet connection.';
-          case 'invalid-credential':
+        case 'invalid-credential':
           return 'Incorrect password or email. Please try again';
         default:
-          return  'Authentication error occurred.';
+          return 'Authentication error occurred.';
       }
     }
 

@@ -1,5 +1,5 @@
 class ArtistModel {
-  final String id; // Add this
+  final String id;
   final String name;
   final String skill;
   final String imageUrl;

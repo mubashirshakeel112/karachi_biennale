@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:karachi_biennale/constants/app_colors.dart';
-import 'package:karachi_biennale/constants/strings.dart';
-import 'package:karachi_biennale/presentation/venues/venue/widgets/custom_venue_card.dart';
-import 'package:karachi_biennale/widgets/custom_app_bar.dart';
 import 'package:karachi_biennale/widgets/custom_dropdown.dart';
-import 'package:provider/provider.dart';
 
 class VenuesFullImageView extends StatelessWidget {
   static const String id = '/venue_full_image_view';
@@ -13,7 +8,6 @@ class VenuesFullImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.secondaryAppBar(title: 'Venues', context: context),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 24),
         child: SingleChildScrollView(

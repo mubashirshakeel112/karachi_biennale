@@ -3,6 +3,7 @@ import 'package:karachi_biennale/domain/models/program_model.dart';
 
 abstract class ProgramService {
   Future<List<ProgramModel>> getProgram();
+  Future<ProgramModel> getProgramById(String id);
 }
 
 class WCProgramService extends ProgramService {
@@ -14,6 +15,16 @@ class WCProgramService extends ProgramService {
         return ProgramModel.fromJson(e.data(), e.id);
       }).toList();
     } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  @override
+  Future<ProgramModel> getProgramById(String id) async{
+    final ref = await FirebaseFirestore.instance.collection('program').doc(id).get();
+    try{
+      return ProgramModel.fromJson(ref.data() ?? {}, ref.id);
+    }catch(e){
       throw Exception(e.toString());
     }
   }

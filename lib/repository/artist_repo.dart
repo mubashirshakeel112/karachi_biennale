@@ -7,4 +7,9 @@ class ArtistRepository extends ArtistService{
   Future<List<ArtistModel>> getArtist() async{
     return await _wcArtistService.getArtist();
   }
+
+  @override
+  Future<List<ArtistModel>> getArtistByIds(List<String> artistId) async{
+    return await _wcArtistService.getArtistByIds(artistId);
+  }
 }

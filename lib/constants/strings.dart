@@ -49,6 +49,7 @@ class Strings {
   static String artistImage4 = "assets/images/backgrounds/artist_img_4.jpeg";
   static String artistImage5 = "assets/images/backgrounds/artist_img_5.jpeg";
   static String artistImage6 = "assets/images/backgrounds/artist_img_6.jpeg";
+  static String artistImage7 = "assets/images/backgrounds/artist_img_7.png";
 
   // Program Images
   static String programImage1 = "assets/images/backgrounds/program_img_1.png";
