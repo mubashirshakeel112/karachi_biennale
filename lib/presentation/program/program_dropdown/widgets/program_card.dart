@@ -69,7 +69,7 @@ class ProgramCard extends StatelessWidget {
               ],
             ),
             Spacer(),
-            GestureDetector(
+            InkWell(
               onTap: onBookmarkedPressed,
               child: Align(
                 alignment: Alignment.bottomRight,

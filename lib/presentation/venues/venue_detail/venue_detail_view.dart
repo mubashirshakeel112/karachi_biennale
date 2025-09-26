@@ -4,6 +4,7 @@ import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/constants/typography.dart';
 import 'package:karachi_biennale/presentation/artist/controller/artist_id_controller.dart';
+import 'package:karachi_biennale/presentation/home/home_view.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_detail_controller.dart';
 import 'package:karachi_biennale/widgets/custom_app_bar.dart';
 import 'package:lottie/lottie.dart';
@@ -45,127 +46,135 @@ class _VenueDetailViewState extends State<VenueDetailView> {
             children: [
               Column(
                 children: [
-                  PrimaryAppBar(height: appbarHeight,),
+                  PrimaryAppBar(
+                    height: appbarHeight,
+                    onHomeTap: () {
+                      Navigator.pushNamed(context, HomeView.id);
+                    },
+                  ),
                   venueDetailController.isLoading
                       ? Expanded(child: Lottie.asset(Strings.lottieLoadAnim, width: 80, height: 80))
                       : Expanded(
-                    child: ListView(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.only(top: appbarHeight / 1.35),
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                venueDetailController.venue?.title ?? '',
-                                style: interBold.copyWith(fontSize: 25),
+                        child: ListView(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.only(top: appbarHeight / 1.35),
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(left: 20, right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    venueDetailController.venue?.title ?? '',
+                                    style: interBold.copyWith(fontSize: 25),
+                                  ),
+                                  Text(venueDetailController.venue?.subtitle ?? '', style: interLight),
+                                ],
                               ),
-                              Text(venueDetailController.venue?.subtitle ?? '', style: interLight),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          color: Color(0xFFF9F9F9),
-                          margin: EdgeInsets.only(top: 35),
-                          padding: EdgeInsets.only(top: 15, bottom: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 22),
-                                child: Text("Address", style: interBold),
-                              ),
-                              SizedBox(height: 5),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 22),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  spacing: 5,
-                                  children: [
-                                    SvgPicture.asset(Strings.pinIcon),
-                                    Expanded(
-                                      child: Text(venueDetailController.venue?.location ?? '', style: interLight),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              color: Color(0xFFF9F9F9),
+                              margin: EdgeInsets.only(top: 35),
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                                    child: Text("Address", style: interBold),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      spacing: 5,
+                                      children: [
+                                        SvgPicture.asset(Strings.pinIcon),
+                                        Expanded(
+                                          child: Text(venueDetailController.venue?.location ?? '', style: interLight),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
-                              Divider(height: 15, color: AppColors.borderColor, thickness: 2),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 22),
-                                child: Text("Phone", style: interBold),
-                              ),
-                              SizedBox(height: 5),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 22),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  spacing: 5,
-                                  children: [
-                                    SvgPicture.asset(Strings.callIcon),
-                                    Expanded(
-                                      child: Text(venueDetailController.venue?.phone ?? '', style: interLight),
+                                  ),
+                                  Divider(height: 15, color: AppColors.borderColor, thickness: 2),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                                    child: Text("Phone", style: interBold),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      spacing: 5,
+                                      children: [
+                                        SvgPicture.asset(Strings.callIcon),
+                                        Expanded(
+                                          child: Text(venueDetailController.venue?.phone ?? '', style: interLight),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 22, top: 35),
+                              child: Text("Artists", style: interBold),
+                            ),
+                            SizedBox(height: 20),
+                            Consumer<ArtistIdController>(
+                              builder: (context, artistIdController, child) {
+                                return SizedBox(
+                                  height: 200,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: artistIdController.artists.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.only(left: 20),
+                                        child: SizedBox(
+                                          width: 128,
+                                          child:
+                                              artistIdController.isLoading
+                                                  ? Center(
+                                                    child: CircularProgressIndicator(
+                                                      color: AppColors.disabled,
+                                                      strokeWidth: 5,
+                                                    ),
+                                                  )
+                                                  : Column(
+                                                    children: [
+                                                      Image.network(
+                                                        artistIdController.artists[index].imageUrl,
+                                                        fit: BoxFit.cover,
+                                                        width: 128,
+                                                        height: 124,
+                                                      ),
+                                                      SizedBox(height: 16),
+                                                      Text(
+                                                        artistIdController.artists[index].name,
+                                                        textAlign: TextAlign.center,
+                                                        style: interRegular.copyWith(
+                                                          fontSize: 18,
+                                                          color: AppColors.textColor,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 22, top: 35),
-                          child: Text("Artists", style: interBold),
-                        ),
-                        SizedBox(height: 20),
-                        Consumer<ArtistIdController>(
-                          builder: (context, artistIdController, child) {
-                            return SizedBox(
-                              height: 200,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemCount: artistIdController.artists.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: SizedBox(
-                                      width: 128,
-                                      child:
-                                      artistIdController.isLoading
-                                          ? Center(
-                                        child: CircularProgressIndicator(color: AppColors.disabled, strokeWidth: 5,),
-                                      )
-                                          : Column(
-                                        children: [
-                                          Image.network(
-                                            artistIdController.artists[index].imageUrl,
-                                            fit: BoxFit.cover,
-                                            width: 128,
-                                            height: 124,
-                                          ),
-                                          SizedBox(height: 16),
-                                          Text(
-                                            artistIdController.artists[index].name,
-                                            textAlign: TextAlign.center,
-                                            style: interRegular.copyWith(
-                                              fontSize: 18,
-                                              color: AppColors.textColor,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
                 ],
               ),
               Positioned(top: appbarHeight / 1.8, left: 20, right: 20, child: Image.asset(Strings.venueDetailImage)),

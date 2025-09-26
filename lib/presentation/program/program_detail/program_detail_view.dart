@@ -4,6 +4,7 @@ import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/constants/typography.dart';
 import 'package:karachi_biennale/presentation/artist/controller/artist_id_controller.dart';
+import 'package:karachi_biennale/presentation/home/home_view.dart';
 import 'package:karachi_biennale/presentation/program/controller/program_detailed_controller.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_detail_controller.dart';
 import 'package:karachi_biennale/presentation/venues/venue/widgets/custom_venue_card.dart';
@@ -66,7 +67,13 @@ class _ProgramDetailViewState extends State<ProgramDetailView> {
                                   ),
                                 ),
                               ),
-                              SvgPicture.asset(Strings.homeIcon),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                onTap: () {
+                                  Navigator.pushNamed(context, HomeView.id);
+                                },
+                                child: SvgPicture.asset(Strings.homeIcon),
+                              ),
                             ],
                           ),
                           SizedBox(height: 30),

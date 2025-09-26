@@ -34,10 +34,10 @@ class _AboutViewState extends State<AboutView> {
               SecondaryAppBar(title: 'About',),
               aboutController.isLoading ? Expanded(child: Lottie.asset(Strings.lottieLoadAnim, width: 80, height: 80)): Expanded(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 17),
                   children: [
                     ListView.builder(
-                      padding: EdgeInsets.only(top: 17),
+                      padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: aboutController.aboutData.length,

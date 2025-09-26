@@ -24,7 +24,17 @@ class ForgotPasswordView extends StatelessWidget {
         builder: (context, provider, child) {
           return Column(
             children: [
-              PrimaryAppBar(title: 'Forgot Password', subtitle: 'Lorem ipsum dolor sit amet,'),
+              PrimaryAppBar(
+                title: 'Forgot Password',
+                subtitle: 'Lorem ipsum dolor sit amet,',
+                onHomeTap: () {
+                  CustomSnackBar.warningSnackBar(
+                    context: context,
+                    title: 'Authentication Needed',
+                    message: 'Please reset your password and log in to continue.',
+                  );
+                },
+              ),
               Form(
                 key: formKey,
                 child: Padding(
@@ -32,32 +42,40 @@ class ForgotPasswordView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Email Address', style: interBold,),
-                      SizedBox(height: 10,),
+                      Text('Email Address', style: interBold),
+                      SizedBox(height: 10),
                       CustomTextField(
                         controller: emailController,
                         hintText: "Enter your email address",
                         prefixIcon: SvgPicture.asset(Strings.mailIcon),
-                        onChanged: (value){provider.setEmail(value);},
+                        onChanged: (value) {
+                          provider.setEmail(value);
+                        },
                       ),
                       SizedBox(height: 29),
-                      !provider.isLoading?CustomButton(
-                        title: "Send Email",
-                        onPressed: () {
-                          if(provider.isFormValid){
-                            provider.forgetPassword(context);
-                          }else{
-                            CustomSnackBar.warningSnackBar(context: context, title: 'Missing Info', message: 'Please fill the field');
-                          }
-                        },
-                      ): CustomLoader(title: 'Forget password...'),
+                      !provider.isLoading
+                          ? CustomButton(
+                            title: "Send Email",
+                            onPressed: () {
+                              if (provider.isFormValid) {
+                                provider.forgetPassword(context);
+                              } else {
+                                CustomSnackBar.warningSnackBar(
+                                  context: context,
+                                  title: 'Missing Info',
+                                  message: 'Please fill the field',
+                                );
+                              }
+                            },
+                          )
+                          : CustomLoader(title: 'Forget password...'),
                     ],
                   ),
                 ),
               ),
             ],
           );
-        }
+        },
       ),
     );
   }

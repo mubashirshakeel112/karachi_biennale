@@ -67,7 +67,7 @@ class ArtistCard extends StatelessWidget {
               ],
             ),
             Spacer(),
-            GestureDetector(
+            InkWell(
               onTap: onVote,
               child: Container(
                 width: 42,

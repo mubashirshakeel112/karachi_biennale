@@ -84,23 +84,28 @@ class _SearchViewState extends State<SearchView> {
                 }
 
                 return ListView(
-                  padding: const EdgeInsets.only(left: 20, right: 16, top: 26, bottom: 19),
+                  padding: const EdgeInsets.only(left: 20, right: 12, top: 18, bottom: 19),
                   children: [
                     if (hasArtists) ...[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Artist", style: interBold),
-                          GestureDetector(
+                          InkWell(
+                            borderRadius: BorderRadius.circular(50),
                             onTap: () {
                               Navigator.pushNamed(context, ArtistView.id);
                             },
-                            child: SvgPicture.asset(Strings.chevronArrow),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgPicture.asset(Strings.chevronArrow),
+                            ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 29),
+                      SizedBox(height: 21),
                       ListView.builder(
+                        padding: EdgeInsets.only(right: 8),
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: artistController.artistData.length >= 2 ? 2 : artistController.artistData.length,
@@ -134,26 +139,30 @@ class _SearchViewState extends State<SearchView> {
                           );
                         },
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 2),
                     ],
                     if (hasPrograms) ...[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Programs", style: interBold),
-                          GestureDetector(
+                          InkWell(
+                            borderRadius: BorderRadius.circular(50),
                             onTap: () {
                               Navigator.pushNamed(context, ProgramView.id);
                             },
-                            child: SvgPicture.asset(Strings.chevronArrow, width: 20, height: 20),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgPicture.asset(Strings.chevronArrow, width: 20, height: 20),
+                            ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 29),
+                      SizedBox(height: 21),
                       ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.zero,
+                        padding: EdgeInsets.only(right: 8),
                         itemCount: programController.filteredProgramData.length >= 2 ? 2 : programController.filteredProgramData.length,
                         itemBuilder: (context, index) {
                           final program = programController.filteredProgramData[index];

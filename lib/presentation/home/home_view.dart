@@ -202,13 +202,15 @@ class _HomeViewState extends State<HomeView> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        GestureDetector(
+                        InkWell(
+                          splashColor: Colors.transparent,
                           onTap: () => key.currentState!.openDrawer(),
                           child: SvgPicture.asset(Strings.drawerIcon),
                         ),
                         SizedBox(width: 12,),
                         Expanded(child: Text("YOUR GUIDE TO", style: interBlack.copyWith(fontSize: 25, color: AppColors.whiteColor))),
-                        GestureDetector(
+                        InkWell(
+                          splashColor: Colors.transparent,
                           onTap: () => Navigator.pushNamed(context, MyEventView.id),
                           child: SvgPicture.asset(Strings.bookmarkOutlineIcon),
                         ),

@@ -29,7 +29,9 @@ class RegisterView extends StatelessWidget {
         builder: (context, provider, child) {
           return Column(
             children: [
-              PrimaryAppBar(title: 'Register', subtitle: 'Please sign in to continue'),
+              PrimaryAppBar(title: 'Register', subtitle: 'Please sign in to continue', onHomeTap: (){
+                CustomSnackBar.warningSnackBar(context: context, title: 'Create Account', message: 'Please sign up to access the Home page.');
+              },),
               Expanded(
                 child: Form(
                   key: formKey,

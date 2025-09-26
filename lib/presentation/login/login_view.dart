@@ -31,6 +31,9 @@ class LoginView extends StatelessWidget {
               PrimaryAppBar(
                 title: 'Login',
                 subtitle: 'Please sign in to continue',
+                onHomeTap: (){
+                  CustomSnackBar.warningSnackBar(context: context, title: 'Login Required', message: 'Please login to continue to the Home page.');
+                },
               ),
               Expanded(
                 child: Form(
