@@ -4,19 +4,19 @@ import 'package:karachi_biennale/constants/typography.dart';
 
 class CustomSnackBar {
 
-  static successSnackBar({required BuildContext context,required String title,required String message}){
-    return _show(context, title: title, message: message, icon: Icons.check_circle, iconColor: Colors.green);
+  static void successSnackBar({required BuildContext context,required String title,required String message}){
+    return show(context, title: title, message: message, icon: Icons.check_circle, iconColor: Colors.green);
   }
 
-  static errorSnackBar({required BuildContext context,required String title,required String message}){
-    return _show(context, title: title, message: message, icon: Icons.cancel, iconColor: AppColors.danger);
+  static void errorSnackBar({required BuildContext context,required String title,required String message}){
+    return show(context, title: title, message: message, icon: Icons.cancel, iconColor: AppColors.danger);
   }
-static warningSnackBar({required BuildContext context,required String title,required String message}){
-    return _show(context, title: title, message: message, icon: Icons.warning, iconColor: AppColors.yellowColor);
+static void warningSnackBar({required BuildContext context,required String title,required String message}){
+    return show(context, title: title, message: message, icon: Icons.warning, iconColor: AppColors.yellowColor);
   }
 
 
-   static void _show(
+   static void show(
       BuildContext context, {
         required String title,
         required String message,

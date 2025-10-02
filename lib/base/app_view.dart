@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:karachi_biennale/constants/app_colors.dart';
-import 'package:karachi_biennale/presentation/about/controller/about_controller.dart';
 import 'package:karachi_biennale/presentation/artist/controller/artist_controller.dart';
 import 'package:karachi_biennale/presentation/artist/controller/artist_id_controller.dart';
 import 'package:karachi_biennale/presentation/event/controller/my_event_controller.dart';
@@ -31,7 +30,6 @@ class AppView extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SignupController()),
         ChangeNotifierProvider(create: (_) => ForgetPasswordController()),
         ChangeNotifierProvider(create: (_) => LogoutController()),
-        ChangeNotifierProvider(create: (_) => AboutController()),
         ChangeNotifierProvider(create: (_) => ArtistController()),
         ChangeNotifierProvider(create: (_) => ProgramController()),
         ChangeNotifierProvider(create: (_) => VenueController()),

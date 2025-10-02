@@ -1,23 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// abstract class VoteService {
-//   Future<void> setVote();
-// }
-//
-// class WCVoteService extends VoteService {
-//   @override
-//   Future<void> setVote() async {
-//     try {
-//       await FirebaseFirestore.instance.collection('users').doc().collection('status').doc('vote').set({
-//         'vote': null,
-//         'createdAt': FieldValue.serverTimestamp()
-//       });
-//     } catch (e) {
-//       debugPrint(e.toString());
-//     }
-//   }
-// }
-
 class VoteService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

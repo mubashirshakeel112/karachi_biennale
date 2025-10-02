@@ -12,6 +12,7 @@ import 'package:karachi_biennale/presentation/program/program_dropdown/program_v
 import 'package:karachi_biennale/presentation/search/search_view.dart';
 import 'package:karachi_biennale/presentation/venues/venue/venue_view.dart';
 import 'package:karachi_biennale/widgets/custom_app_bar.dart';
+import 'package:karachi_biennale/widgets/custom_snack_bar.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -57,7 +58,9 @@ class _HomeViewState extends State<HomeView> {
           Navigator.pushNamed(context, VenueView.id);
         },
       ),
-      GridItems(text: "Prize / Voting", image: Strings.trophyIcon, onTap: () {}),
+      GridItems(text: "Prize / Voting", image: Strings.trophyIcon, onTap: () {
+        CustomSnackBar.show(context, title: 'Coming Soon 🚀', message: 'Prize & Voting feature will be available in the upcoming update.');
+      }),
       GridItems(
         text: "Artist list",
         image: Strings.listPointersIcon,

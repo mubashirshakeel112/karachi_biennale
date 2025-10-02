@@ -37,35 +37,9 @@ class Strings {
   static String aboutImage2 = "assets/images/backgrounds/about_img_2.png";
   static String aboutImage3 = "assets/images/backgrounds/about_img_3.png";
 
-  // Event Images
-  static String eventImage1 = "assets/images/backgrounds/event_img_1.png";
-  static String eventImage2 = "assets/images/backgrounds/event_img_2.png";
-  static String eventImage3 = "assets/images/backgrounds/event_img_3.png";
-
-  // Artist Images
-  static String artistImage1 = "assets/images/backgrounds/artist_img_1.jpeg";
-  static String artistImage2 = "assets/images/backgrounds/artist_img_2.jpeg";
-  static String artistImage3 = "assets/images/backgrounds/artist_img_3.jpeg";
-  static String artistImage4 = "assets/images/backgrounds/artist_img_4.jpeg";
-  static String artistImage5 = "assets/images/backgrounds/artist_img_5.jpeg";
-  static String artistImage6 = "assets/images/backgrounds/artist_img_6.jpeg";
-  static String artistImage7 = "assets/images/backgrounds/artist_img_7.png";
-
-  // Program Images
-  static String programImage1 = "assets/images/backgrounds/program_img_1.png";
-  static String programImage2 = "assets/images/backgrounds/program_img_2.png";
-  static String programImage3 = "assets/images/backgrounds/program_img_3.png";
-  static String programImage4 = "assets/images/backgrounds/program_img_4.png";
-  static String programImage5 = "assets/images/backgrounds/program_img_5.png";
-  static String programImage6 = "assets/images/backgrounds/program_img_6.png";
-  static String programImage7 = "assets/images/backgrounds/program_img_7.png";
-
   // Venue Image
   static String venueFullImage1 = "assets/images/backgrounds/venue_full_img_1.png";
   static String venueFullImage2 = "assets/images/backgrounds/venue_full_img_2.png";
-  static String venueListImage1 = "assets/images/backgrounds/venue_list_img1.png";
-  static String venueListImage2 = "assets/images/backgrounds/venue_list_img2.png";
-  static String venueListImage3 = "assets/images/backgrounds/venue_list_img3.png";
 
   // Venue Detail
   static String venueDetailImage = "assets/images/backgrounds/venue_detail_img.png";

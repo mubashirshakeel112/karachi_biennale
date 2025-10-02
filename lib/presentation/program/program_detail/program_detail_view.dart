@@ -12,6 +12,7 @@ import 'package:karachi_biennale/widgets/custom_app_bar.dart';
 import 'package:karachi_biennale/widgets/custom_button.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProgramDetailView extends StatefulWidget {
   static const String id = '/program_detail_view';
@@ -38,6 +39,7 @@ class _ProgramDetailViewState extends State<ProgramDetailView> {
 
   @override
   Widget build(BuildContext context) {
+    final venueProvider = Provider.of<VenueDetailController>(context, listen: false);
     return Scaffold(
       body: Consumer<ProgramDetailedController>(
         builder: (context, programDetailController, child) {
@@ -96,7 +98,32 @@ class _ProgramDetailViewState extends State<ProgramDetailView> {
                                   ],
                                 ),
                               ),
-                              SvgPicture.asset(Strings.shareIcon),
+                              InkWell(
+                                  onTap: () async{
+                                    final program = programDetailController.program;
+
+                                    if (program != null) {
+                                      await SharePlus.instance.share(
+                                        ShareParams(
+                                          text: '''
+📢 ${program.title}
+
+${program.subtitle}
+
+📅 Date: ${program.date}
+⏰ Time: ${program.time}
+
+📍 Venue: ${venueProvider.venue?.title ?? ''}
+
+${program.description}
+          ''',
+                                          subject: program.title,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: SvgPicture.asset(Strings.shareIcon),
+                              ),
                             ],
                           ),
                         ],
