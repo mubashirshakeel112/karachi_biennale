@@ -61,6 +61,7 @@ class LoginView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setPassword(value);
                         },
+
                       ),
                       SizedBox(height: 13),
                       GestureDetector(

@@ -11,6 +11,7 @@ import 'package:karachi_biennale/presentation/login/controller/login_controller.
 import 'package:karachi_biennale/presentation/program/controller/program_controller.dart';
 import 'package:karachi_biennale/presentation/program/controller/program_detailed_controller.dart';
 import 'package:karachi_biennale/presentation/register/controller/signup_controller.dart';
+import 'package:karachi_biennale/presentation/splash/splash_view.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_controller.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_detail_controller.dart';
 import 'package:karachi_biennale/repository/check_user_exist_repo.dart';
@@ -22,7 +23,6 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CheckUserExistRepository checkUserExistRepository = CheckUserExistRepository();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MyEventController()),
@@ -39,7 +39,7 @@ class AppView extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProgramDetailedController()),
       ],
       child: MaterialApp(
-        initialRoute: checkUserExistRepository.isUserExist(),
+        initialRoute: SplashView.id,
         onGenerateRoute: RouteGenerator.generateRoute,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

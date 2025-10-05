@@ -18,8 +18,8 @@ import 'package:page_transition/page_transition.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case SplashView.id:
-      //   return MaterialPageRoute(builder: (_) => SplashView());
+      case SplashView.id:
+        return MaterialPageRoute(builder: (_) => SplashView());
       case LoginView.id:
         return PageTransition(child: LoginView(), type: PageTransitionType.rightToLeft);
       case RegisterView.id:

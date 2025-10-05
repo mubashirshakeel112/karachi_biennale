@@ -247,7 +247,9 @@ ${program.description}
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

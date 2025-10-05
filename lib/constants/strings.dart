@@ -31,6 +31,7 @@ class Strings {
 
   // App Logo
   static String appLogo = "assets/images/logo/logo.png";
+  static String splash = "assets/images/backgrounds/splash.jpg";
 
   // About Images
   static String aboutImage1 = "assets/images/backgrounds/about_img_1.png";

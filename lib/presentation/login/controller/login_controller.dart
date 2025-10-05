@@ -16,17 +16,17 @@ class LoginController extends ChangeNotifier{
   String get email => _email;
   String get password => _password;
 
-  setLoading(bool value){
+  void setLoading(bool value){
     _isLoading = value;
     notifyListeners();
   }
 
-  setEmail(String value){
+  void setEmail(String value){
     _email = value;
     notifyListeners();
   }
 
-  setPassword(String value){
+  void setPassword(String value){
     _password = value;
     notifyListeners();
   }
@@ -48,5 +48,4 @@ class LoginController extends ChangeNotifier{
       setLoading(false);
     }
   }
-
 }

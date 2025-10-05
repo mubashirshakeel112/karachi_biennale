@@ -13,12 +13,12 @@ class ForgetPasswordController extends ChangeNotifier {
 
   String get email => _email;
 
-  setLoading(bool value) {
+  void setLoading(bool value) {
     _isLoading = value;
     notifyListeners();
   }
 
-  setEmail(String value) {
+  void setEmail(String value) {
     _email = value;
     notifyListeners();
   }
@@ -28,6 +28,7 @@ class ForgetPasswordController extends ChangeNotifier {
       setLoading(true);
       bool isForgetPassword = await _forgetPasswordRepository.forgetPassword(email);
       if (isForgetPassword) {
+        if (context.mounted) Navigator.pop(context);
         if (context.mounted) CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Check your email',);
       } else {
         if (context.mounted) CustomSnackBar.errorSnackBar(context: context, title: 'Error', message: 'Forget Password Failed');

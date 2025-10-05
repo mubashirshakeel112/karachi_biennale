@@ -111,7 +111,7 @@ class _HomeViewState extends State<HomeView> {
                     Consumer<UserController>(
                       builder: (context, userController, child) {
                         if (userController.isLoading) {
-                          return CircularProgressIndicator();
+                          return Center(child: CircularProgressIndicator(color: AppColors.whiteColor, strokeWidth: 5,));
                         }
                         return FittedBox(
                           child: Text(
