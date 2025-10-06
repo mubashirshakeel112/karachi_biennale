@@ -58,6 +58,7 @@ class RegisterView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setEmail(value);
                         },
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 18),
                       Text('Password', style: interBold),
@@ -69,6 +70,7 @@ class RegisterView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setPassword(value);
                         },
+                        obscureText: true,
                       ),
                       SizedBox(height: 18),
                       Text('Confirm Password', style: interBold),
@@ -80,6 +82,7 @@ class RegisterView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setConfirmPassword(value);
                         },
+                        obscureText: true,
                       ),
                       SizedBox(height: 29),
                       !provider.isLoading
@@ -117,7 +120,7 @@ class RegisterView extends StatelessWidget {
                                   style: interBold,
                                   text: "Login now",
                                   recognizer:
-                                      TapGestureRecognizer()..onTap = () => Navigator.pushNamed(context, LoginView.id),
+                                      TapGestureRecognizer()..onTap = () => Navigator.pop(context),
                                 ),
                               ],
                             ),

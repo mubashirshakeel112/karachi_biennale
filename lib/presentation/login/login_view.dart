@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:karachi_biennale/constants/strings.dart';
 import 'package:karachi_biennale/constants/typography.dart';
@@ -22,6 +23,11 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+    ));
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Consumer<LoginController>(
@@ -50,6 +56,7 @@ class LoginView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setEmail(value);
                         },
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 18),
                       Text('Password', style: interBold),
@@ -61,7 +68,7 @@ class LoginView extends StatelessWidget {
                         onChanged: (value) {
                           provider.setPassword(value);
                         },
-
+                        obscureText: true,
                       ),
                       SizedBox(height: 13),
                       GestureDetector(
