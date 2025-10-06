@@ -15,13 +15,12 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    // checkUserExistRepository.isUserExist();
     Future.delayed(Duration(seconds: 3),(){
       bool isUserExist = checkUser();
       if(isUserExist == true){
-        Navigator.pushReplacementNamed(context, HomeView.id);
+        Navigator.pushNamedAndRemoveUntil(context, HomeView.id, (Route<dynamic> route) => false);
       }else{
-        Navigator.pushReplacementNamed(context, LoginView.id);
+        Navigator.pushNamedAndRemoveUntil(context, LoginView.id, (Route<dynamic> route) => false);
       }
     });
     super.initState();

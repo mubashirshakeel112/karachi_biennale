@@ -93,7 +93,7 @@ class RegisterView extends StatelessWidget {
                                   CustomSnackBar.errorSnackBar(
                                     context: context,
                                     title: 'Error',
-                                    message: 'Invalid Password',
+                                    message: 'Passwords do not match.',
                                   );
                                 }
                               } else {
@@ -105,7 +105,7 @@ class RegisterView extends StatelessWidget {
                               }
                             },
                           )
-                          : CustomLoader(title: 'Singing up...'),
+                          : CustomLoader(title: 'creating your account...'),
                       Padding(
                         padding: const EdgeInsets.only(top: 39, bottom: 24),
                         child: Center(

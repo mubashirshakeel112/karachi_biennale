@@ -14,7 +14,6 @@ import 'package:karachi_biennale/presentation/register/controller/signup_control
 import 'package:karachi_biennale/presentation/splash/splash_view.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_controller.dart';
 import 'package:karachi_biennale/presentation/venues/controller/venue_detail_controller.dart';
-import 'package:karachi_biennale/repository/check_user_exist_repo.dart';
 import 'package:karachi_biennale/route_generator.dart';
 import 'package:provider/provider.dart';
 

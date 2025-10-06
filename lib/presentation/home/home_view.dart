@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:karachi_biennale/constants/app_colors.dart';
 import 'package:karachi_biennale/constants/strings.dart';
@@ -35,6 +36,12 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+    ));
+
     final double appBarHeight = 265 ;
     final List<GridItems> items = [
       GridItems(
@@ -184,7 +191,7 @@ class _HomeViewState extends State<HomeView> {
                     provider.logout(context);
                   },
                   contentPadding: EdgeInsets.only(left: 20, top: 20, bottom: 21, right: 18),
-                  title: Text("Login", style: interLight.copyWith(fontSize: 25, color: AppColors.whiteColor)),
+                  title: Text("Logout", style: interLight.copyWith(fontSize: 25, color: AppColors.whiteColor)),
                   trailing: SvgPicture.asset(Strings.logoutIcon),
                 );
               },

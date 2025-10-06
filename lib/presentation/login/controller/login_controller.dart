@@ -38,7 +38,7 @@ class LoginController extends ChangeNotifier{
       if(isLogin){
         if(context.mounted) await Provider.of<UserController>(context, listen: false).getUser();
         if(context.mounted) CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Login Successfully', );
-        if(context.mounted) Navigator.pushReplacementNamed(context, HomeView.id);
+        if(context.mounted) Navigator.pushNamedAndRemoveUntil(context, HomeView.id, (Route<dynamic> route) => false);
       }else{
         if(context.mounted) CustomSnackBar.errorSnackBar(context: context, title: 'Error', message: 'Login Failed',);
       }

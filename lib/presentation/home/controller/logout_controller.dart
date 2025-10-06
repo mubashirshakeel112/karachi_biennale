@@ -11,7 +11,7 @@ class LogoutController extends ChangeNotifier{
       bool isLogout = await _logoutRepository.logout();
       if(isLogout){
         if(context.mounted) CustomSnackBar.successSnackBar(context: context, title: 'Success', message: 'Logout Successfully', );
-        if(context.mounted) Navigator.pushReplacementNamed(context, LoginView.id);
+        if(context.mounted) Navigator.pushNamedAndRemoveUntil(context, LoginView.id, (Route<dynamic> route) => false,);
       }else{
         if(context.mounted) CustomSnackBar.errorSnackBar(context: context, title: 'Error', message: 'Logout Failed');
       }
